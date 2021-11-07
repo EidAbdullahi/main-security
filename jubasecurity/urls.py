@@ -19,6 +19,8 @@ urlpatterns = [
    path('cidlogin', LoginView.as_view(template_name='juba/cidlogin.html')),
    # path('studentlogin', LoginView.as_view(template_name='school/studentlogin.html')),
    # path('teacherlogin', LoginView.as_view(template_name='school/teacherlogin.html')),
+    path('admin-add-police', views.admin_add_police_view,name='admin-add-police'),
+    path('admin-view-police', views.admin_view_police_view,name='admin-view-police'),
 
 
     path('afterlogin', views.afterlogin_view,name='afterlogin'),
@@ -26,6 +28,7 @@ urlpatterns = [
 
 
     path('admin-dashboard', views.admin_dashboard_view,name='admin-dashboard'),
+    path('admin-police', views.admin_police_view,name='admin-police'),
 
 
     path('aboutus', views.aboutus_view),

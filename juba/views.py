@@ -1,7 +1,7 @@
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from . import forms
-from django.db import models
+from . import models
 from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib.auth.decorators import login_required,user_passes_test
@@ -37,12 +37,38 @@ def afterlogin_view(request):
 
 
 @login_required(login_url='adminlogin')
-
 def admin_dashboard_view(request):
+    totalpolice=models.Police.objects.all().count()
+    mydict={
+        'totalpolice':totalpolice,
+    }
+    return render(request,'juba/admin_dashboard.html',context=mydict)
 
-    return render(request,'juba/admin_dashboard.html')
+@login_required(login_url='adminlogin')
+def admin_police_view(request):
+    return render(request,'juba/admin_police.html')
 
 
+@login_required(login_url='adminlogin')
+def admin_add_police_view(request):
+    form1=forms.PoliceForm()
+    mydict={'form1':form1}
+    if request.method=='POST':
+        form1=forms.PoliceForm(request.POST)
+       
+        if form1.is_valid():
+            form1.save()
+            
+
+        else:
+            print("form is invalid")
+        return HttpResponseRedirect('admin-police')
+    return render(request,'juba/admin_add_police.html',context=mydict)
+
+@login_required(login_url='adminlogin')
+def admin_view_police_view(request):
+    polices=models.Police.objects.all()
+    return render(request,'juba/admin_view_police.html',{'polices':polices})
 
 
 
