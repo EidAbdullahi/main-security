@@ -8,24 +8,24 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home_view,name=''),
 
-   # path('adminclick', views.adminclick_view),
-   # path('teacherclick', views.teacherclick_view),
-   # path('studentclick', views.studentclick_view),
 
 
    # path('adminsignup', views.admin_signup_view),
    # path('studentsignup', views.student_signup_view,name='studentsignup'),
    # path('teachersignup', views.teacher_signup_view),
-   # path('adminlogin', LoginView.as_view(template_name='school/adminlogin.html')),
+   path('adminlogin', LoginView.as_view(template_name='juba/adminlogin.html')),
+   path('logisticlogin', LoginView.as_view(template_name='juba/logisticlogin.html')),
+   path('oblogin', LoginView.as_view(template_name='juba/oblogin.html')),
+   path('cidlogin', LoginView.as_view(template_name='juba/cidlogin.html')),
    # path('studentlogin', LoginView.as_view(template_name='school/studentlogin.html')),
    # path('teacherlogin', LoginView.as_view(template_name='school/teacherlogin.html')),
 
 
-    #path('afterlogin', views.afterlogin_view,name='afterlogin'),
+    path('afterlogin', views.afterlogin_view,name='afterlogin'),
     path('logout', LogoutView.as_view(template_name='juba/index.html'),name='logout'),
 
 
-    #path('admin-dashboard', views.admin_dashboard_view,name='admin-dashboard'),
+    path('admin-dashboard', views.admin_dashboard_view,name='admin-dashboard'),
 
 
     path('aboutus', views.aboutus_view),
