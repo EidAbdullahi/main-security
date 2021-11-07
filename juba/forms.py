@@ -16,3 +16,12 @@ class PoliceForm(forms.ModelForm):
         model=models.Police
         fields='__all__'
 
+
+class LogisticUserForm(forms.ModelForm):
+    class Meta:
+        model=User
+        fields=['first_name','last_name','username','password']
+class LogisticExtraForm(forms.ModelForm):
+    class Meta:
+        model=models.Logistic
+        fields=['mother_name','mobile','gender']

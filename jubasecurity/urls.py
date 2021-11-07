@@ -22,6 +22,11 @@ urlpatterns = [
     path('admin-add-police', views.admin_add_police_view,name='admin-add-police'),
     path('admin-view-police', views.admin_view_police_view,name='admin-view-police'),
 
+    path('admin-logistic', views.admin_logistic_view,name='admin-logistic'),
+    path('admin-add-logistic', views.admin_add_logistic_view,name='admin-add-logistic'),
+    path('admin-view-logistic', views.admin_view_logistic_view,name='admin-view-logistic'),
+    path('logistic-dashboard', views.logistic_dashboard_view,name='logistic-dashboard'),
+
 
     path('afterlogin', views.afterlogin_view,name='afterlogin'),
     path('logout', LogoutView.as_view(template_name='juba/index.html'),name='logout'),

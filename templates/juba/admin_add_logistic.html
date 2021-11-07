@@ -46,48 +46,41 @@
 </head>
 
 
-
 <form method="post">
   {% csrf_token %}
   <div class="container register-form">
     <div class="form">
       <div class="note">
-        <p>Register Police</p>
+        <p>Register Logistic</p>
       </div>
 
       <div class="form-content">
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              {% render_field form1.name class="form-control" placeholder="Name" %}
+              {% render_field form1.first_name class="form-control" placeholder="First Name" %}
             </div>
             <div class="form-group">
-              {% render_field form1.mother_name class="form-control" placeholder="Mother Name" %}
+              {% render_field form1.username class="form-control" placeholder="Username" %}
             </div>
             <div class="form-group">
-              {% render_field form1.dob class="form-control" placeholder="Birth Date" %}
+              {% render_field form2.mobile class="form-control" placeholder="Mobile" %}
             </div>
             <div class="form-group">
-              {% render_field form1.place_of_birth class="form-control" placeholder="Place Of Birth" %}
+              {% render_field form2.mother_name class="form-control" placeholder="Mother Name" %}
             </div>
-            <div class="form-group">
-                {% render_field form1.salary class="form-control" placeholder="Salary" %}
-              </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              {% render_field form1.gender class="form-control" placeholder="Gender" %}
+              {% render_field form1.last_name class="form-control" placeholder="Last Name" %}
             </div>
             <div class="form-group">
-              {% render_field form1.maritial_status class="form-control" placeholder="Maritial Status" %}
+              {% render_field form1.password class="form-control" placeholder="Password" %}
             </div>
             <div class="form-group">
-              {% render_field form1.training_count class="form-control" placeholder="Training Count" %}
+              {% render_field form2.gender class="form-control" placeholder="Gender" %}
             </div>
-            <div class="form-group">
-              {% render_field form1.training_by class="form-control" placeholder="Trainer Name" %}
-            </div>
-            
+        
           </div>
         </div>
         <button type="submit" class="btnSubmit">Register</button>
