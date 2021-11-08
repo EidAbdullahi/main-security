@@ -4,115 +4,101 @@
 
 {% block content %}
 
-
+<!DOCTYPE html>
+{% load static %}
+<html>
 
 <head>
-  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      max-width: 300px;
+      margin: auto;
+      text-align: center;
+      font-family: arial;
+    }
+
+    .title {
+      color: grey;
+      font-size: 18px;
+    }
+
+    button {
+      border: none;
+      outline: 0;
+      display: inline-block;
+      padding: 8px;
+      color: white;
+      background-color: #000;
+      text-align: center;
+      cursor: pointer;
+      width: 100%;
+      font-size: 18px;
+    }
+
+    button:hover,
+    a:hover {
+      opacity: 0.7;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      padding: 10px;
 
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <link href="http://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+    }
 
-  <style type="text/css">
+    .grid-container {
+
+   
+    justify-content: center;
+}
+
     a:link {
       text-decoration: none;
     }
 
-    h6 {
+    a {
       color: white;
-    }
-
-    .order-card {
-      color: #fff;
-    }
-
-    .bg-c-blue {
-      background: linear-gradient(45deg, #4099ff, #73b4ff);
-    }
-
-    .bg-c-green {
-      background: linear-gradient(45deg, #2ed8b6, #59e0c5);
-    }
-
-    .bg-c-yellow {
-      background: linear-gradient(45deg, #FFB64D, #ffcb80);
-    }
-
-    .bg-c-pink {
-      background: linear-gradient(45deg, #FF5370, #ff869a);
-    }
-
-
-    .card {
-      border-radius: 5px;
-      -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
-      box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
-      border: none;
-      margin-bottom: 30px;
-      -webkit-transition: all 0.3s ease-in-out;
-      transition: all 0.3s ease-in-out;
-    }
-
-    .card .card-block {
-      padding: 25px;
-    }
-
-    .order-card i {
-      font-size: 26px;
-    }
-
-    .f-left {
-      float: left;
-    }
-
-    .f-right {
-      float: right;
     }
   </style>
 </head>
 
 <body>
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-xl-6">
-        <div class="card bg-c-blue order-card">
-          <div class="card-block">
-            <a href="/admin-view-police">
-              <h6 class="m-b-20">View All Police</h6>
-            </a>
-            <br>
-            <h2 class="text-right"><i class="fas fa-eye f-left"></i></h2>
 
-          </div>
-        </div>
-      </div>
 
-      <div class="col-md-6 col-xl-6">
-        <div class="card bg-c-green order-card">
-          <div class="card-block">
-            <a href="/admin-add-police">
-              <h6 class="m-b-20">Add Police</h6>
-            </a>
-            <br>
-            <h2 class="text-right"><i class="fas fa-plus-circle f-left"></i></h2>
-          </div>
-        </div>
-      </div>
 
-     
+  <div class="grid-container" style="align-items: center;">
+    <div class="grid-item">
+        {% for s in reports %}
+      <div class="card">
+        <img src="{% static s.criminal_pic.url %}"  style="width:100%">
+        <p class="title">Criminal Name : {{s.criminal_name}}</p>
+        <p>Crime : {{s.crime}}</p>
+        <p>Crime Date : {{s.crime_date}}</p>
+        <p>Gender : {{s.gender}}</p>
+        <p>Height : {{s.height}}</p>
+        <p>Weight : {{s.weight}}</p>
+        <p>Hair Color : {{s.hair_color}}</p>
+        <p>Reported Name : {{s.reporter_name}}</p>
+      
 
-     
+
+
+       <br>
+      </div><br><br>
+      {% endfor %}
+
     </div>
+
+  
   </div>
-
-<br><br><br><br>
-  <script src="http://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
-  <script type="text/javascript">
-
-  </script>
+  
+  <br><br><br>
 </body>
 
+</html>
 
 {% endblock content %}
