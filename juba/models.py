@@ -57,3 +57,17 @@ class OB(models.Model):
     @property
     def get_name(self):
         return self.user.first_name+" "+self.user.last_name
+
+class Report(models.Model):
+    crime_date=models.DateField()
+    criminal_pic= models.ImageField(upload_to='profile_pic/Criminal/',null=True,blank=True)
+    criminal_name=models.CharField(max_length=20)
+    gender=models.CharField(max_length=20)
+    height=models.CharField(max_length=20)
+    weight=models.CharField(max_length=20)
+    hair_color=models.CharField(max_length=20)
+    crime=models.CharField(max_length=500)
+
+    reporter_name=models.CharField(max_length=20,null=True)
+    posted_by=models.CharField(max_length=20,null=True)
+    posted_date=models.DateField(auto_now=True)

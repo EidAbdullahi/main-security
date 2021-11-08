@@ -37,6 +37,15 @@ urlpatterns = [
 
     path('admin-dashboard', views.admin_dashboard_view,name='admin-dashboard'),
     path('admin-police', views.admin_police_view,name='admin-police'),
+    path('admin-cid', views.admin_cid_view,name='admin-cid'),
+    path('admin-ob', views.admin_ob_view,name='admin-ob'),
+
+    path('admin-add-cid', views.admin_add_cid_view,name='admin-add-cid'),
+    path('admin-view-cid', views.admin_view_cid_view,name='admin-view-cid'),
+    path('cid-dashboard', views.cid_dashboard_view,name='cid-dashboard'),
+
+    path('admin-add-ob', views.admin_add_ob_view,name='admin-add-ob'),
+    path('admin-view-ob', views.admin_view_ob_view,name='admin-view-ob'),
 
 
     path('aboutus', views.aboutus_view),

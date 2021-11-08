@@ -10,11 +10,16 @@ class ContactusForm(forms.Form):
 
 
 
-#for notice related form
+
 class PoliceForm(forms.ModelForm):
     class Meta:
         model=models.Police
         fields='__all__'
+class ReportForm(forms.ModelForm):
+    class Meta:
+        model=models.Report
+        fields='__all__'
+
 
 
 class LogisticUserForm(forms.ModelForm):
