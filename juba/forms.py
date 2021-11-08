@@ -18,7 +18,7 @@ class PoliceForm(forms.ModelForm):
 class ReportForm(forms.ModelForm):
     class Meta:
         model=models.Report
-        fields='__all__'
+        fields=['crime_date','criminal_pic','criminal_name','gender','height','weight','hair_color','crime']
 
 
 

@@ -59,7 +59,7 @@ class OB(models.Model):
         return self.user.first_name+" "+self.user.last_name
 
 class Report(models.Model):
-    crime_date=models.DateField()
+    crime_date=models.CharField(max_length=20)
     criminal_pic= models.ImageField(upload_to='profile_pic/Criminal/',null=True,blank=True)
     criminal_name=models.CharField(max_length=20)
     gender=models.CharField(max_length=20)

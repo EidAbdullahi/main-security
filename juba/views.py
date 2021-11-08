@@ -211,14 +211,40 @@ def logistic_dashboard_view(request):
 def cid_dashboard_view(request):
     totalob=models.OB.objects.all().count()
     totalreport=models.Report.objects.all().count()
-    
-    
     mydict={
         'totalob':totalob,
         'totalreport':totalreport,
-        
     }
     return render(request,'juba/cid_dashboard.html',context=mydict)
+
+
+@login_required(login_url='cidlogin')
+@user_passes_test(is_cid)
+def cid_add_report_view(request):
+    form1=forms.ReportForm()
+    mydict={'form1':form1}
+    if request.method=='POST':
+        form1=forms.ReportForm(request.POST,request.FILES)
+        if form1.is_valid():
+            report=form1.save()
+            report.posted_by="CID"
+            
+            report.reporter_name=str(request.user)
+            report.save()
+        else:
+            print("form is invalid")
+        return HttpResponseRedirect('cid-view-report')
+    return render(request,'juba/cid_add_report.html',context=mydict)
+
+@login_required(login_url='cidlogin')
+@user_passes_test(is_cid)
+def cid_view_report_view(request):
+    reports=models.Report.objects.all()
+    mydict={
+        'reports':reports,
+    }
+    return render(request,'juba/cid_view_report.html',context=mydict)
+
 
 
 @login_required(login_url='logisticlogin')
