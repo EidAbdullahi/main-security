@@ -1,4 +1,4 @@
-{% extends 'juba/adminbase.html' %}
+{% extends 'juba/logisticbase.html' %}
 {%load static%}
 
 
@@ -35,7 +35,7 @@
 
     <div class="panel panel-primary">
       <div class="panel-heading">
-        <h6 class="panel-title">Police</h6>
+        <h6 class="panel-title">Police Salary Details</h6>
 
       </div>
 
@@ -45,13 +45,7 @@
           <tr>
             <th>Name</th>
             <th>Profile Pic</th>
-            <th>Mother Name</th>
-            <th>Date Of Birth</th>
-            <th>Place Of Birth</th>
-            <th>Gender</th>
-            <th>Maritial status</th>
-            <th>Training Count</th>
-            <th>Training By</th>
+           
             <th>Salary</th>
           </tr>
         </thead>
@@ -59,13 +53,7 @@
         <tr>
           <td> {{s.name}}</td>
           <td> <img src="{% static s.profile_pic.url %}" alt="Profile Pic" height="40px" width="40px" /></td>
-          <td>{{s.mother_name}}</td>
-          <td>{{s.dob}}</td>
-          <td>{{s.place_of_birth}}</td>
-          <td>{{s.gender}}</td>
-          <td>{{s.maritial_status}}</td>
-          <td>{{s.training_count}}</td>
-          <td>{{s.training_by}}</td>
+          
           <td>{{s.salary}}</td>
         
         </tr>

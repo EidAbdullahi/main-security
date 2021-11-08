@@ -26,6 +26,9 @@ urlpatterns = [
     path('admin-add-logistic', views.admin_add_logistic_view,name='admin-add-logistic'),
     path('admin-view-logistic', views.admin_view_logistic_view,name='admin-view-logistic'),
     path('logistic-dashboard', views.logistic_dashboard_view,name='logistic-dashboard'),
+    path('logistic-cid', views.logistic_cid_view,name='logistic-cid'),
+    path('logistic-police', views.logistic_police_view,name='logistic-police'),
+    path('logistic-ob', views.logistic_ob_view,name='logistic-ob'),
 
 
     path('afterlogin', views.afterlogin_view,name='afterlogin'),

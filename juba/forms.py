@@ -25,3 +25,23 @@ class LogisticExtraForm(forms.ModelForm):
     class Meta:
         model=models.Logistic
         fields=['mother_name','mobile','gender']
+
+
+class CIDUserForm(forms.ModelForm):
+    class Meta:
+        model=User
+        fields=['first_name','last_name','username','password']
+class CIDExtraForm(forms.ModelForm):
+    class Meta:
+        model=models.CID
+        fields=['mother_name','mobile','gender','salary']
+
+
+class OBUserForm(forms.ModelForm):
+    class Meta:
+        model=User
+        fields=['first_name','last_name','username','password']
+class OBExtraForm(forms.ModelForm):
+    class Meta:
+        model=models.OB
+        fields=['mother_name','mobile','gender','salary']

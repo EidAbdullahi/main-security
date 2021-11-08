@@ -1,3 +1,4 @@
+from django.db.models.aggregates import Sum
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from . import forms
@@ -57,12 +58,9 @@ def admin_add_police_view(request):
     form1=forms.PoliceForm()
     mydict={'form1':form1}
     if request.method=='POST':
-        form1=forms.PoliceForm(request.POST)
-       
+        form1=forms.PoliceForm(request.POST,request.FILES)
         if form1.is_valid():
             form1.save()
-            
-
         else:
             print("form is invalid")
         return HttpResponseRedirect('admin-police')
@@ -116,13 +114,34 @@ def admin_view_logistic_view(request):
 @login_required(login_url='logisticlogin')
 @user_passes_test(is_logistic)
 def logistic_dashboard_view(request):
-    totalpolice=models.Police.objects.all().count()
-    totallogistic=models.Logistic.objects.all().count()
+    totalpolicesalary=models.Police.objects.aggregate(Sum('salary'))
+    totalcidsalary=models.CID.objects.aggregate(Sum('salary'))
+    totalobsalary=models.OB.objects.aggregate(Sum('salary'))
+    
     mydict={
-        'totalpolice':totalpolice,
-        'totallogistic':totallogistic,
+        'totalpolicesalary':totalpolicesalary['salary__sum'],
+        'totalcidsalary':totalcidsalary['salary__sum'],
+        'totalobsalary':totalobsalary['salary__sum'],
     }
     return render(request,'juba/logistic_dashboard.html',context=mydict)
+
+@login_required(login_url='logisticlogin')
+@user_passes_test(is_logistic)
+def logistic_police_view(request):
+   polices=models.Police.objects.all()
+   return render(request,'juba/logistic_view_police.html',{'polices':polices})
+
+@login_required(login_url='logisticlogin')
+@user_passes_test(is_logistic)
+def logistic_cid_view(request):
+   cids=models.CID.objects.all()
+   return render(request,'juba/logistic_view_cid.html',{'cids':cids})
+
+@login_required(login_url='logisticlogin')
+@user_passes_test(is_logistic)
+def logistic_ob_view(request):
+   obs=models.OB.objects.all()
+   return render(request,'juba/logistic_view_ob.html',{'obs':obs})
 
 
 
