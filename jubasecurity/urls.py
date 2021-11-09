@@ -36,10 +36,16 @@ urlpatterns = [
     path('admin-police', views.admin_police_view,name='admin-police'),
     path('admin-cid', views.admin_cid_view,name='admin-cid'),
     path('admin-ob', views.admin_ob_view,name='admin-ob'),
+    path('admin-report', views.admin_report_view,name='admin-report'),
+    path('delete-report/<int:pk>', views.delete_report_view,name='delete-report'),
 
     path('admin-add-cid', views.admin_add_cid_view,name='admin-add-cid'),
     path('admin-view-cid', views.admin_view_cid_view,name='admin-view-cid'),
     path('cid-dashboard', views.cid_dashboard_view,name='cid-dashboard'),
+
+    path('ob-dashboard', views.ob_dashboard_view,name='ob-dashboard'),
+    path('ob-add-report', views.ob_add_report_view,name='ob-add-report'),
+    path('ob-view-report', views.ob_view_report_view,name='ob-view-report'),
 
     path('admin-add-ob', views.admin_add_ob_view,name='admin-add-ob'),
     path('admin-view-ob', views.admin_view_ob_view,name='admin-view-ob'),

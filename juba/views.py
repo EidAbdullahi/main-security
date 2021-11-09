@@ -157,6 +157,18 @@ def admin_view_ob_view(request):
     return render(request,'juba/admin_view_ob.html',{'obs':obs})
 
 
+@login_required(login_url='adminlogin')
+def admin_report_view(request):
+    reports=models.Report.objects.all()
+    return render(request,'juba/admin_view_report.html',{'reports':reports})
+
+@login_required(login_url='adminlogin')
+
+def delete_report_view(request,pk):
+    report=models.Report.objects.get(id=pk)
+    report.delete()
+    return redirect('admin-report')
+
 
 
 @login_required(login_url='adminlogin')
@@ -245,6 +257,49 @@ def cid_view_report_view(request):
     }
     return render(request,'juba/cid_view_report.html',context=mydict)
 
+
+
+
+@login_required(login_url='oblogin')
+@user_passes_test(is_ob)
+def ob_dashboard_view(request):
+    totalobreport=models.Report.objects.filter(posted_by="OB").count()
+    totalcidreport=models.Report.objects.filter(posted_by="CID").count()
+    mydict={
+        'totalobreport':totalobreport,
+        'totalcidreport':totalcidreport,
+    }
+    return render(request,'juba/ob_dashboard.html',context=mydict)
+
+
+
+@login_required(login_url='oblogin')
+@user_passes_test(is_ob)
+def ob_add_report_view(request):
+    form1=forms.ReportForm()
+    mydict={'form1':form1}
+    if request.method=='POST':
+        form1=forms.ReportForm(request.POST,request.FILES)
+        if form1.is_valid():
+            report=form1.save()
+            report.posted_by="OB"
+            
+            report.reporter_name=str(request.user)
+            report.save()
+        else:
+            print("form is invalid")
+        return HttpResponseRedirect('ob-view-report')
+    return render(request,'juba/ob_add_report.html',context=mydict)
+
+
+@login_required(login_url='oblogin')
+@user_passes_test(is_ob)
+def ob_view_report_view(request):
+    reports=models.Report.objects.all().filter(posted_by="OB")
+    mydict={
+        'reports':reports,
+    }
+    return render(request,'juba/OB_view_report.html',context=mydict)
 
 
 @login_required(login_url='logisticlogin')

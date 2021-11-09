@@ -1,4 +1,4 @@
-{% extends 'juba/cidbase.html' %}
+{% extends 'juba/adminbase.html' %}
 
 
 
@@ -30,7 +30,7 @@
       display: inline-block;
       padding: 8px;
       color: white;
-      background-color: #000;
+      background-color: rgb(252, 0, 0);
       text-align: center;
       cursor: pointer;
       width: 100%;
@@ -86,11 +86,13 @@
         <p>Weight : {{s.weight}}</p>
         <p>Hair Color : {{s.hair_color}}</p>
         <p>Reported Name : {{s.reporter_name}}</p>
+        
+        <p><button><a  href="{% url 'delete-report' s.id  %}">Delete</a></button></p>
       
 
 
 
-       <br>
+       
       </div><br><br>
       {% endfor %}
 

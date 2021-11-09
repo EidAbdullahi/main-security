@@ -176,18 +176,17 @@
   <div class="sidebar">
     <center>
 
-      <img src="{% static "images/admin.png" %}" class="profile_image" alt="">
+      <img src="{% static "images/logistic.png" %}" class="profile_image" alt="">
+      <p style="color: #ccc;">OB</p>
       <h4>{{request.user.first_name}}</h4>
 
     </center>
 
-    <a href="/admin-dashboard"><i class="fas fa-desktop"></i><span>Dashboard</span></a>
-    <a href="/admin-cid"><i class="fas fa-user-secret"></i><span>CID</span></a>
-    <a href="/admin-police"><i class="fas fa-user-shield"></i><span>Police</span></a>
-    <a href="/admin-ob"><i class="fas fa-user-tie"></i><span>OB</span></a>
-    <a href="/admin-logistic"><i class="fas fa-dollar-sign"></i><span>Logistic</span></a>
-    <a href="/admin-report"><i class="fas fa-file"></i><span>Report</span></a>
-
+    <a href="/ob-dashboard"><i class="fas fa-desktop"></i><span>Dashboard</span></a>
+    <a href="/ob-add-report"><i class="fas fa-user-secret"></i><span>Add Report</span></a>
+    <a href="/ob-view-report"><i class="fas fa-user-shield"></i><span>View Report</span></a>
+    
+    
 
   </div>
   <!--sidebar end-->
