@@ -407,7 +407,7 @@ def ob_view_report_view(request):
     mydict={
         'reports':reports,
     }
-    return render(request,'juba/OB_view_report.html',context=mydict)
+    return render(request,'juba/ob_view_report.html',context=mydict)
 
 
 @login_required(login_url='logisticlogin')
