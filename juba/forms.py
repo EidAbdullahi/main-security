@@ -18,7 +18,7 @@ class PoliceForm(forms.ModelForm):
 class ReportForm(forms.ModelForm):
     class Meta:
         model=models.Report
-        fields=['crime_date','criminal_pic','criminal_name','gender','height','weight','hair_color','crime']
+        fields=['crime_date','criminal_pic','criminal_name','gender','height','unique_id','weight','hair_color','crime']
 
 
 
@@ -39,7 +39,7 @@ class CIDUserForm(forms.ModelForm):
 class CIDExtraForm(forms.ModelForm):
     class Meta:
         model=models.CID
-        fields=['mother_name','mobile','gender','salary']
+        fields=['mother_name','mobile','gender','salary','district','unique_id']
 
 
 class OBUserForm(forms.ModelForm):

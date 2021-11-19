@@ -18,6 +18,13 @@ urlpatterns = [
    
     path('admin-add-police', views.admin_add_police_view,name='admin-add-police'),
     path('admin-view-police', views.admin_view_police_view,name='admin-view-police'),
+    path('searchpolice', views.searchpolice_view,name='searchpolice'),
+    path('delete-police/<int:pk>', views.delete_police_view,name='delete-police'),
+    path('update-police/<int:pk>', views.update_police_view,name='update-police'),
+    
+    path('add-more-crime/<int:pk>', views.add_more_crime_view,name='add-more-crime'),
+
+
 
     path('admin-logistic', views.admin_logistic_view,name='admin-logistic'),
     path('admin-add-logistic', views.admin_add_logistic_view,name='admin-add-logistic'),
@@ -41,6 +48,13 @@ urlpatterns = [
 
     path('admin-add-cid', views.admin_add_cid_view,name='admin-add-cid'),
     path('admin-view-cid', views.admin_view_cid_view,name='admin-view-cid'),
+    path('searchcid', views.searchcid_view,name='searchcid'),
+    path('searchcrime', views.searchcrime_view,name='searchcrime'),
+    path('searchcrimebyob', views.searchcrimebyob_view,name='searchcrimebyob'),
+    path('delete-cid/<int:pk>', views.delete_cid_view,name='delete-cid'),
+    path('update-cid/<int:pk>', views.update_cid_view,name='update-cid'),
+    
+
     path('cid-dashboard', views.cid_dashboard_view,name='cid-dashboard'),
 
     path('ob-dashboard', views.ob_dashboard_view,name='ob-dashboard'),

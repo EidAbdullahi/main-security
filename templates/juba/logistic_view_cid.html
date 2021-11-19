@@ -44,16 +44,15 @@
 
           <tr>
             <th>Name</th>
-            <th>Profile Pic</th>
+            <th>Mobile</th>
            
             <th>Salary</th>
           </tr>
         </thead>
         {% for s in cids %}
         <tr>
-          <td> {{s.name}}</td>
-          <td> <img src="{% static s.profile_pic.url %}" alt="Profile Pic" height="40px" width="40px" /></td>
-          
+          <td> {{s.get_name}}</td>
+          <td> {{s.mobile}}</td>
           <td>{{s.salary}}</td>
         
         </tr>

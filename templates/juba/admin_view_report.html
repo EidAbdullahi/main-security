@@ -37,6 +37,19 @@
       font-size: 18px;
     }
 
+    #button1 {
+      border: none;
+      outline: 0;
+      display: inline-block;
+      padding: 8px;
+      color: white;
+      background-color: rgb(38, 0, 252);
+      text-align: center;
+      cursor: pointer;
+      width: 100%;
+      font-size: 18px;
+    }
+
     button:hover,
     a:hover {
       opacity: 0.7;
@@ -63,22 +76,93 @@
     a {
       color: white;
     }
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+    .row {
+      margin: 5px;
+    }
+
+      .promo{
+  animation: promo 4s linear infinite;
+}
+@keyframes promo{
+0%{opacity: 0;}
+50%{opacity: .5;}
+100%{opacity: 1;}
+}
+
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+.search {
+width: 100%;
+position: relative;
+display: flex;
+}
+
+.searchTerm {
+width: 100%;
+border: 3px solid #00B4CC;
+border-right: none;
+padding: 5px;
+
+border-radius: 5px 0 0 5px;
+outline: none;
+color: #9DBFAF;
+}
+
+.searchTerm:focus{
+color: #00B4CC;
+}
+
+.searchButton {
+
+border: 1px solid #00B4CC;
+background: #00B4CC;
+
+color: #fff;
+border-radius: 0 5px 5px 0;
+cursor: pointer;
+
+}
+
   </style>
 </head>
 
 <body>
 
 
-
   <div class="grid-container" style="align-items: center;">
     <div class="grid-item">
         <hr>
       <h1 style="text-align: center;color: blue;">Crime Reported By Both CID & OB</h1>
-      <hr><br><br>
+      <hr><br>
+      
+      
+  <form method="get" action="/searchcrime">
+    {% csrf_token %}
+  <div class="wrap">
+     <div class="search">
+        <input type="text" class="searchTerm" name="query" placeholder="Search Crime By ID">
+        <input type="submit" value="Search" class="searchButton">
+          
+       </input>
+     </div>
+  </div>
+  </form>
+
+      <br>
         {% for s in reports %}
       <div class="card">
         <img src="{% static s.criminal_pic.url %}"  style="width:100%">
         <p class="title">Criminal Name : {{s.criminal_name}}</p>
+        <p>Unique ID: {{s.unique_id}}</p>
         <p>Crime : {{s.crime}}</p>
         <p>Crime Date : {{s.crime_date}}</p>
         <p>Gender : {{s.gender}}</p>
@@ -87,7 +171,8 @@
         <p>Hair Color : {{s.hair_color}}</p>
         <p>Reported Name : {{s.reporter_name}}</p>
         
-        <p><button><a  href="{% url 'delete-report' s.id  %}">Delete</a></button></p>
+        <p><button><a  href="{% url 'delete-report' s.id  %}">Delete</a></button>
+        </p>
       
 
 

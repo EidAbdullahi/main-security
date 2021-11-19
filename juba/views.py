@@ -76,6 +76,51 @@ def admin_view_police_view(request):
     return render(request,'juba/admin_view_police.html',{'polices':polices})
 
 
+@login_required(login_url='adminlogin')
+def searchpolice_view(request):
+    # whatever user write in search box we get in query
+    query = request.GET['query']
+    polices=models.Police.objects.all().filter(unique_id=int(query))
+    return render(request,'juba/search-police-result.html',{'polices':polices})
+
+
+
+@login_required(login_url='adminlogin')
+def delete_police_view(request,pk):
+    police=models.Police.objects.get(id=pk)
+    police.delete()
+    return redirect('admin-view-police')
+
+@login_required(login_url='adminlogin')
+
+def update_police_view(request,pk):
+    police=models.Police.objects.get(id=pk)
+    form1=forms.PoliceForm(instance=police)
+    mydict={'form1':form1}
+    if request.method=='POST':
+        form1=forms.PoliceForm(request.POST,instance=police) 
+        print(form1)
+        if form1.is_valid():
+            user=form1.save()
+            user.save()
+            return redirect('admin-view-police')
+    return render(request,'juba/admin_update_police.html',context=mydict)
+
+
+
+
+def add_more_crime_view(request,pk):
+    
+    mydict={'pk':pk}
+    if request.method=='POST':
+        query = request.POST['query']
+        
+        report=models.Report.objects.get(id=pk)
+        report.crime=report.crime + " , " + query
+        report.save()
+    
+        return redirect('ob-view-report')
+    return render(request,'juba/add_more_crime.html',context=mydict)
 
 
 
@@ -109,7 +154,7 @@ def admin_add_cid_view(request):
 
             f2=form2.save(commit=False)
             f2.user=user
-            f2.status=True
+           
             f2.save()
 
             group = Group.objects.get_or_create(name='CID')
@@ -118,6 +163,35 @@ def admin_add_cid_view(request):
             print("form is invalid")
         return HttpResponseRedirect('admin-cid')
     return render(request,'juba/admin_add_cid.html',context=mydict)
+
+
+@login_required(login_url='adminlogin')
+
+def update_cid_view(request,pk):
+    cid=models.CID.objects.get(id=pk)
+    user=models.User.objects.get(id=cid.user_id)
+
+    form1=forms.CIDUserForm(instance=user)
+    form2=forms.CIDExtraForm(instance=cid)
+    mydict={'form1':form1,'form2':form2}
+
+    if request.method=='POST':
+        form1=forms.CIDUserForm(request.POST,instance=user)
+        form2=forms.CIDExtraForm(request.POST,instance=cid)
+        print(form1)
+        if form1.is_valid() and form2.is_valid():
+            user=form1.save()
+            user.set_password(user.password)
+            user.save()
+            f2=form2.save(commit=False)
+           
+            f2.save()
+            return redirect('admin-view-cid')
+    return render(request,'juba/admin_update_cid.html',context=mydict)
+
+
+
+
 
 
 @login_required(login_url='adminlogin')
@@ -151,6 +225,24 @@ def admin_view_cid_view(request):
     cids=models.CID.objects.all()
     return render(request,'juba/admin_view_cid.html',{'cids':cids})
 
+
+@login_required(login_url='adminlogin')
+def searchcid_view(request):
+    # whatever user write in search box we get in query
+    query = request.GET['query']
+    cids=models.CID.objects.all().filter(unique_id=int(query))
+    return render(request,'juba/search-cid-result.html',{'cids':cids})
+
+@login_required(login_url='adminlogin')
+def delete_cid_view(request,pk):
+    cid=models.CID.objects.get(id=pk)
+    user=models.User.objects.get(id=cid.user_id)
+    user.delete()
+    cid.delete()
+    return redirect('admin-view-cid')
+
+
+
 @login_required(login_url='adminlogin')
 def admin_view_ob_view(request):
     obs=models.OB.objects.all()
@@ -161,6 +253,22 @@ def admin_view_ob_view(request):
 def admin_report_view(request):
     reports=models.Report.objects.all()
     return render(request,'juba/admin_view_report.html',{'reports':reports})
+
+
+@login_required(login_url='adminlogin')
+def searchcrime_view(request):
+    # whatever user write in search box we get in query
+    query = request.GET['query']
+    reports=models.Report.objects.all().filter(unique_id=int(query))
+    return render(request,'juba/search-crime-result.html',{'reports':reports})
+
+
+def searchcrimebyob_view(request):
+    # whatever user write in search box we get in query
+    query = request.GET['query']
+    reports=models.Report.objects.all().filter(unique_id=int(query))
+    return render(request,'juba/search-crime-result-ob.html',{'reports':reports})
+
 
 @login_required(login_url='adminlogin')
 

@@ -1,4 +1,4 @@
-{% extends 'juba/obbase.html' %}
+{% extends 'juba/adminbase.html' %}
 {% load widget_tweaks %}
 
 {% block content %}
@@ -52,27 +52,35 @@
   <div class="container register-form">
     <div class="form">
       <div class="note">
-        <p>ADD REPORT</p>
+        <p>Update Police</p>
       </div>
 
       <div class="form-content">
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              {% render_field form1.criminal_name class="form-control" placeholder="Criminal Name" %}
+              {% render_field form1.name class="form-control" placeholder="Name" %}
             </div>
             <div class="form-group">
-              {% render_field form1.height class="form-control" placeholder="Height" %}
+              {% render_field form1.mother_name class="form-control" placeholder="Mother Name" %}
             </div>
             <div class="form-group">
-              {% render_field form1.crime_date class="form-control" placeholder="Crime Date" %}
+              {% render_field form1.dob class="form-control" placeholder="Birth Date" %}
             </div>
-           
             <div class="form-group">
-                {% render_field form1.crime class="form-control" placeholder="Crime" %}
+              {% render_field form1.place_of_birth class="form-control" placeholder="Place Of Birth" %}
+            </div>
+            <div class="form-group">
+                {% render_field form1.salary class="form-control" placeholder="Salary" %}
               </div>
               <div class="form-group">
                 {% render_field form1.unique_id class="form-control" placeholder="Unique ID" %}
+              </div>
+              <div class="form-group">
+                {% render_field form1.blood_group class="form-control" placeholder="Blood Group" %}
+              </div>
+              <div class="form-group">
+                {% render_field form1.district class="form-control" placeholder="District" %}
               </div>
           </div>
           <div class="col-md-6">
@@ -80,18 +88,26 @@
               {% render_field form1.gender class="form-control" placeholder="Gender" %}
             </div>
             <div class="form-group">
-              {% render_field form1.weight class="form-control" placeholder="Weight" %}
+              {% render_field form1.maritial_status class="form-control" placeholder="Maritial Status" %}
             </div>
             <div class="form-group">
-              {% render_field form1.hair_color class="form-control" placeholder="Hair Color" %}
+              {% render_field form1.training_count class="form-control" placeholder="Training Count" %}
             </div>
-          
             <div class="form-group">
-                {% render_field form1.criminal_pic class="form-control" placeholder="profile_image" %}
+              {% render_field form1.training_by class="form-control" placeholder="Trainer Name" %}
+            </div>
+            <div class="form-group">
+                {% render_field form1.profile_pic class="form-control" placeholder="profile_image" %}
+              </div>
+              <div class="form-group">
+                {% render_field form1.gun_patch_number class="form-control" placeholder="Gun Patch Number" %}
+              </div>
+              <div class="form-group">
+                {% render_field form1.number_of_magazine class="form-control" placeholder="Number Of Magazine" %}
               </div>
           </div>
         </div>
-        <button type="submit" class="btnSubmit">ADD</button>
+        <button type="submit" class="btnSubmit">Register</button>
       </div>
     </div>
   </div>
