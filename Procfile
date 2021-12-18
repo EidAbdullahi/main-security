@@ -1,0 +1,1 @@
+web: gunicorn jubasecurity.wsgi --log-file -
