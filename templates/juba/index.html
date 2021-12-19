@@ -5,7 +5,7 @@
 <html lang="en">
 
 <head>
-  <title>secure police system</title>
+  <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -14,12 +14,12 @@
 </head>
 
 <body>
+  
   <div class="centered">
-    <div class="pic">
-    <img class="pic" src="{% static "images/police1.jpg" %}" alt="" style="width: 100%; padding-bottom: 40%; margin-left: 3%;"  >
-  </div>
+    <a href="#"><button class="get"
+      style="margin-left:130px; letter-spacing: 5px;">LOGIN AS</button></a>
     <div class="container">
-      <h1>LOGIN AS</h1>
+      
       <a href="/adminlogin" style="text-align:center" ;><button type="button" class="btn btn-success">ADMIN</button></a>
       <a href="/oblogin" style="text-align:center" ;><button type="button" class="btn btn-success">OB</button></a>
       <a href="/cidlogin" style="text-align:center" ;><button type="button" class="btn btn-success">CID</button></a>
@@ -28,9 +28,15 @@
 
     </div>
   </div>
-  <img src="https://www.industr.com/en/__image/a/2295124/alias/xl/v/2/c/22/ar/flexible/fn/Cybersecurity.jpg" alt=""
-    style="width: 100%; ">
+  <div class="">
+    <img  src="{% static "images/police1.jpg" %}" alt="" style="width:100%; margin-bottom: 200px;">
+  </div>
+ 
 <style>
+  body{
+    background-color: rgb(248, 168, 168);
+    background-image: url('/static/images/kis2.jpg');
+  }
   .centered {
   position: absolute;
   top: 50%;
@@ -41,6 +47,17 @@
   margin-left: 0%;
   margin-right: 0%;
   width: auto;
+}
+
+.get{
+background-color: yellow;
+font-size: 35px;
+font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+outline-style: none;
+margin-top: 50px;
+margin-bottom: 30px;
+padding: 10px;
+
 }
 
 </style>
